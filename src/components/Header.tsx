@@ -3,11 +3,11 @@ import { cookooLogo } from '../assets';
 
 // Navigation items configuration
 const navigationItems = [
-  { id: 'home', label: 'Home' },
-  { id: 'blog', label: 'Blog' },
-  { id: 'videos', label: 'Videos' },
-  { id: 'about', label: 'About Us' },
-  { id: 'contact', label: 'Contact Us' },
+  { id: 'home', label: 'Home', sectionId: 'home' },
+  { id: 'blog', label: 'Blog', sectionId: 'blog' },
+  { id: 'videos', label: 'Videos', sectionId: 'videos' },
+  { id: 'about', label: 'About Us', sectionId: 'about' },
+  { id: 'contact', label: 'Contact Us', sectionId: 'contact' },
 ];
 
 // Mobile menu icon components
@@ -139,9 +139,18 @@ const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Event handlers
+
   const handleNavigationClick = (itemId: string) => {
     setActiveSection(itemId);
     setIsMobileMenuOpen(false); // Close mobile menu when item is clicked
+    // Scroll to the section with the corresponding ID
+    const navItem = navigationItems.find(item => item.id === itemId);
+    if (navItem && navItem.sectionId) {
+      const section = document.getElementById(navItem.sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   };
 
   const toggleMobileMenu = () => {

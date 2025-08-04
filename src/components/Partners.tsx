@@ -27,7 +27,7 @@ const Partners: React.FC = () => {
   ];
 
   return (
-    <section className="relative bg-white pt-20 pb-64 px-5 overflow-hidden">
+    <section className="relative bg-white pt-10 pb-24 px-5 overflow-hidden">
       {/* Dot Pattern Background - expanded with 2 more columns and rows */}
       <div className="absolute -top-4 left-40 w-80 h-80 opacity-25">
         <div 
